@@ -12,6 +12,7 @@ var request = require('request'); // "Request" library
 var cors = require('cors');
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
+const PORT = process.env.PORT || 8888
 
 var client_id = 'c452cc75e6e04861af70640bd86f9b98'; // Your client id
 var client_secret = '013cdd7676d44541a9e4c915e6feece4'; // Your secret
@@ -144,4 +145,4 @@ app.get('/refresh_token', function(req, res) {
 });
 
 console.log('Listening on 8888');
-app.listen(8888);
+app.listen(PORT);
