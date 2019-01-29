@@ -245,9 +245,9 @@
             if(array != null ){
               $.ajax({
                   url: 'https://api.claromusica.com/api/album/detail/albumId/' + id ,
-                  type: 'GET',
-                  "Content-Type": 'application/json',
+
                   headers: {
+                  'Accept': 'application/json',
                   "Authentication": "lqJNUCxRPNwx2KthgesxBXqHqDfbGVSiz4PZp7jobu"
                   },
                   success: function(response) {
