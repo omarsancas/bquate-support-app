@@ -240,15 +240,18 @@
 
                 }
             });
+            
 
             //Claro API CALL
             if(array != null ){
               $.ajax({
                   url: 'https://api.claromusica.com/api/album/detail/albumId/' + id ,
-
+                  "async": true,
+                  "crossDomain": true,
+                  "method": "GET",
                   headers: {
-                  'Accept': 'application/json',
-                  "Authentication": "lqJNUCxRPNwx2KthgesxBXqHqDfbGVSiz4PZp7jobu"
+                    "cache-control": "no-cache",
+                    "Postman-Token": "a4f3d2be-2b23-4faf-adaa-25305a33c570"
                   },
                   success: function(response) {
                     console.log("claro", response);
