@@ -263,6 +263,29 @@
               });
             }
 
+
+
+            $.ajax({
+                url: 'https://next.fugamusic.com/api/catalog/products?&search=' + upc ,
+                "async": true,
+                "crossDomain": true,
+                "method": "GET",
+                "Cookie": "_ga=GA1.2.1006722210.1546887874; __utmc=71625860; __utma=71625860.1006722210.1546887874.1546986138.1548805194.8; __utmz=71625860.1548805194.8.7.utmcsr=fuga.com|utmccn=(referral)|utmcmd=referral|utmcct=/; __utmt=1; __utmb=71625860.1.10.1548805194; _gid=GA1.2.1635297585.1548805194; _gat_UA-82749359-4=1; fuga_JSESSIONID=s1%7E20c17d15-e7c6-4da2-a8df-36d928021acc; _gat=1; connect.sid=s%3A26be87a4-bee6-40b4-a0e1-ae44c644c267.4DiXmM38Mz2SDLkdERoL0FYR5PmHfWSBrXZttWDKcbM"
+                headers: {
+                  "cache-control": "no-cache",
+                  "Postman-Token": "a4f3d2be-2b23-4faf-adaa-25305a33c570"
+                },
+                success: function(response) {
+                  console.log("fuga", response);
+                  //oauthPlaceholder.innerHTML = userProfileTemplate(response);
+                /*  claroPlaceholder.innerHTML = claroTemplate({
+                    album_id: response.albumId,
+                  });*/
+                }
+            });
+
+
+
           }, false);
         }
       })();
