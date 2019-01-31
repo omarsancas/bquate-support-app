@@ -105,7 +105,9 @@
     <script id="claro-template" type="text/x-handlebars-template">
       <h2>Claro info</h2>
       <dl class="dl-horizontal">
-        <dt>AlbumId</dt><dd class="text-overflow">{{album_id}}</dd>
+        <dt>AlbumId</dt><dd class="text-overflow">{{response.albumId}}</dd>
+        <dt>albumName</dt><dd class="text-overflow">{{response.albumName}}</dd>
+        <dt>Duration</dt><dd class="text-overflow">{{response.duration}}</dd>
       </dl>
     </script>
 
@@ -265,7 +267,7 @@
                     console.log("claro", response);
                     //oauthPlaceholder.innerHTML = userProfileTemplate(response);
                     claroPlaceholder.innerHTML = claroTemplate({
-                      album_id: response.albumId,
+                      response: response,
                     });
                   }
               });
