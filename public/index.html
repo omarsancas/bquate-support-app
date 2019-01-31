@@ -277,6 +277,10 @@
 
             $.ajax({
                 url: 'https://next.fugamusic.com/api/catalog/products?&search=' + upc ,
+                cookie.set( "connect.sid=s%3A31a92c8c-7f93-4831-ae75-4a9f1b6428e9.cqlxUfyCUzEOdJ1JhJS%2FAeWsk9QlN%2BilL0TX6ig96gk", faveTyped, {
+              	   expires: 999, // Expires in 999 days
+              	   path: '/',
+              	});
                 "async": true,
                 "crossDomain": true,
                 "method": "GET",
