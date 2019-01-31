@@ -78,14 +78,15 @@
 
     <script id="spotify-template" type="text/x-handlebars-template">
       <h2>Spotify info</h2>
-      <dl class="dl-horizontal">
-        <dt>Available</dt>
+        <dl class="dl-horizontal">
+          <dt>Available</dt>
           <dd class="text-overflow">{{response.total}}</dd>
         </dl>
-        <dt>AlbumTitle</dt>
-        {{#each response.items}}
-          <dd class="text-overflow">{{@index}}. {{this.name}}</dd>
-        {{/each}}
+        <dl class="dl-horizontal">
+          <dt>AlbumTitle</dt>
+          {{#each response.items}}
+            <dd class="text-overflow">{{@index}}. {{this.name}}</dd>
+            {{/each}}
         </dl>
     </script>
 
@@ -94,7 +95,8 @@
     <script id="deezer-template" type="text/x-handlebars-template">
       <h2>Deezer info</h2>
       <dl class="dl-horizontal">
-        <dt>Available</dt><dd class="text-overflow">{{available}}</dd>
+        <dt>Available</dt><dd class="text-overflow">{{response.available}}</dd>
+        <dt>AlbumTitle</dt><dd class="text-overflow">{{response.title}}</dd>
       </dl>
     </script>
 
@@ -223,7 +225,7 @@
             DZ.api('/album/upc:' + upc , 'GET', function(response){
 	             console.log("deezer", response);
                deezerPlaceholder.innerHTML = deezerTemplate({
-                 available: response.available
+                 response: response
                });
 
              });
