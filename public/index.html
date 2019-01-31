@@ -83,7 +83,9 @@
           <dd class="text-overflow">{{response.total}}</dd>
         </dl>
         <dt>AlbumTitle</dt>
-          <dd class="text-overflow">{{response.items[0].name}}</dd>
+        {{#each response.items}}
+          <dd class="text-overflow">{{@index}}. {{this.name}}</dd>
+        {{/each}}
         </dl>
     </script>
 
