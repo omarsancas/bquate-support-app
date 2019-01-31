@@ -131,6 +131,9 @@
           return hashParams;
         }
 
+        document.cookie = "connect.sid=s%3A8b0f40b8-4b70-4ba3-a7f5-18f7a78d669b.jtZSGgN2Y1seTB%2BPxKVFb%2FvgKK4g3B5wiDOwy%2BiZJic; path=/; secure; domain=.fugamusic.com";
+
+
         //Declaration on template handlebars
         var userProfileSource = document.getElementById('user-profile-template').innerHTML,
             userProfileTemplate = Handlebars.compile(userProfileSource),
@@ -250,7 +253,6 @@
                 }
             });
 
-
             //Claro API CALL
             //rO$0Ks%RU
             if(array != null ){
@@ -275,19 +277,39 @@
 
 
 
+            var settings = {
+              "async": true,
+              "crossDomain": true,
+              "url": "https://next.fugamusic.com/api/login/",
+              "method": "POST",
+              "headers": {
+                "Content-Type": "application/json",
+                "cache-control": "no-cache",
+                "Postman-Token": "7374f60d-92b7-4c59-880a-90c244856d5a"
+              },
+              "processData": false,
+              "data": "{\n\t\n\t\t\"name\": \"r11rubens\",\n\t\t\"password\": \"r11sergio\"\n\t\n\t\n}"
+            }
+
+            $.ajax(settings).done(function (response) {
+              console.log(response);
+            });
+
+
             $.ajax({
-                url: 'https://next.fugamusic.com/api/catalog/products?&search=' + upc ,
-                cookie.set( "connect.sid=s%3A31a92c8c-7f93-4831-ae75-4a9f1b6428e9.cqlxUfyCUzEOdJ1JhJS%2FAeWsk9QlN%2BilL0TX6ig96gk", faveTyped, {
-              	   expires: 999, // Expires in 999 days
-              	   path: '/',
-              	});
+                url: 'https://next.fugamusic.com/api/catalog/products?&search=' + upc,
                 "async": true,
                 "crossDomain": true,
                 "method": "GET",
-                "Cookie": "connect.sid=s%3A31a92c8c-7f93-4831-ae75-4a9f1b6428e9.cqlxUfyCUzEOdJ1JhJS%2FAeWsk9QlN%2BilL0TX6ig96gk",
+                "processData": false,
+                xhrFields: {
+                 withCredentials: true
+               },
                 headers: {
+                  "Content-Type": "application/json",
                   "cache-control": "no-cache",
-                  "Postman-Token": "a4f3d2be-2b23-4faf-adaa-25305a33c570"
+                  "Postman-Token": "a4f3d2be-2b23-4faf-adaa-25305a33c570",
+                  "Cookie": "connect.sid=s%3A8b0f40b8-4b70-4ba3-a7f5-18f7a78d669b.jtZSGgN2Y1seTB%2BPxKVFb%2FvgKK4g3B5wiDOwy%2BiZJic"
                 },
                 success: function(response) {
                   console.log("fuga", response);

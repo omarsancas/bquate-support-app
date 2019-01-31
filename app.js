@@ -16,7 +16,12 @@ const PORT = process.env.PORT || 8888
 
 var client_id = 'c452cc75e6e04861af70640bd86f9b98'; // Your client id
 var client_secret = '013cdd7676d44541a9e4c915e6feece4'; // Your secret
-var redirect_uri = 'https://aqueous-brushlands-26539.herokuapp.com/callback'; // Your redirect uri
+if(process.env.PORT){
+    var redirect_uri = 'https://aqueous-brushlands-26539.herokuapp.com/callback'; // Your redirect uri
+}else {
+    var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
+}
+
 
 /**
  * Generates a random string containing numbers and letters
