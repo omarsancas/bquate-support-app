@@ -80,7 +80,10 @@
       <h2>Spotify info</h2>
       <dl class="dl-horizontal">
         <dt>Available</dt>
-          <dd class="text-overflow">{{total}}</dd>
+          <dd class="text-overflow">{{response.total}}</dd>
+        </dl>
+        <dt>AlbumTitle</dt>
+          <dd class="text-overflow">{{response.items[0].name}}</dd>
         </dl>
     </script>
 
@@ -235,7 +238,7 @@
                 success: function(response) {
                   console.log("spotify", response);
                   spotifyPlaceholder.innerHTML = spotifyTemplate({
-                    total: response.albums.total
+                    response: response.albums
                   });
 
                 }
@@ -243,6 +246,7 @@
 
 
             //Claro API CALL
+            //rO$0Ks%RU
             if(array != null ){
               $.ajax({
                   url: 'https://salty-caverns-49235.herokuapp.com/https://api.claromusica.com/api/album/detail/albumId/' + id ,
