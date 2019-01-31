@@ -287,6 +287,9 @@
                 "cache-control": "no-cache",
                 "Postman-Token": "7374f60d-92b7-4c59-880a-90c244856d5a"
               },
+              xhrFields: {
+               withCredentials: true
+             },
               "processData": false,
               "data": "{\n\t\n\t\t\"name\": \"r11rubens\",\n\t\t\"password\": \"r11sergio\"\n\t\n\t\n}"
             }
@@ -297,7 +300,7 @@
 
 
             $.ajax({
-                url: 'https://next.fugamusic.com/api/catalog/products?&search=' + upc,
+                url: 'https://salty-caverns-49235.herokuapp.com/https://next.fugamusic.com/api/catalog/products?&search=' + upc,
                 "async": true,
                 "crossDomain": true,
                 "method": "GET",
