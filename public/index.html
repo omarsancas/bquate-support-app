@@ -96,6 +96,8 @@
       <h2>Deezer info</h2>
       <dl class="dl-horizontal">
         <dt>Available</dt><dd class="text-overflow">{{response.available}}</dd>
+      </dl>
+      <dl class="dl-horizontal">
         <dt>AlbumTitle</dt><dd class="text-overflow">{{response.title}}</dd>
       </dl>
     </script>
@@ -276,7 +278,7 @@
 
 
             var settings = {
-              "async": true,              
+              "async": true,
               "url": "https://next.fugamusic.com/api/login/",
               "method": "POST",
               xhrFields: { withCredentials: true },
