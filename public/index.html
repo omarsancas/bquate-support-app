@@ -131,8 +131,6 @@
           return hashParams;
         }
 
-        document.cookie = "connect.sid=s%3A8b0f40b8-4b70-4ba3-a7f5-18f7a78d669b.jtZSGgN2Y1seTB%2BPxKVFb%2FvgKK4g3B5wiDOwy%2BiZJic; path=/; secure; domain=.fugamusic.com";
-
 
         //Declaration on template handlebars
         var userProfileSource = document.getElementById('user-profile-template').innerHTML,
@@ -278,18 +276,15 @@
 
 
             var settings = {
-              "async": true,
-              "crossDomain": true,
+              "async": true,              
               "url": "https://next.fugamusic.com/api/login/",
               "method": "POST",
+              xhrFields: { withCredentials: true },
               "headers": {
                 "Content-Type": "application/json",
                 "cache-control": "no-cache",
                 "Postman-Token": "7374f60d-92b7-4c59-880a-90c244856d5a"
               },
-              xhrFields: {
-               withCredentials: true
-             },
               "processData": false,
               "data": "{\n\t\n\t\t\"name\": \"r11rubens\",\n\t\t\"password\": \"r11sergio\"\n\t\n\t\n}"
             }
@@ -300,19 +295,15 @@
 
 
             $.ajax({
-                url: 'https://salty-caverns-49235.herokuapp.com/https://next.fugamusic.com/api/catalog/products?&search=' + upc,
+                url: 'https://next.fugamusic.com/api/catalog/products?&search=' + upc,
                 "async": true,
                 "crossDomain": true,
                 "method": "GET",
                 "processData": false,
-                xhrFields: {
-                 withCredentials: true
-               },
                 headers: {
                   "Content-Type": "application/json",
                   "cache-control": "no-cache",
                   "Postman-Token": "a4f3d2be-2b23-4faf-adaa-25305a33c570",
-                  "Cookie": "connect.sid=s%3A8b0f40b8-4b70-4ba3-a7f5-18f7a78d669b.jtZSGgN2Y1seTB%2BPxKVFb%2FvgKK4g3B5wiDOwy%2BiZJic"
                 },
                 success: function(response) {
                   console.log("fuga", response);
