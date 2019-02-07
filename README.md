@@ -40,4 +40,5 @@ Then, open `http://localhost:8888` in a browser.
 -Accept multiple upcs convert in arrays
 -Call FUGA API
 -Get the title of the album and call claro api to search the album
--Catch API errors like 401 or 
+-Catch API errors like 401 or
+-Call itunes api https://itunes.apple.com/lookup?upc=720642462928
