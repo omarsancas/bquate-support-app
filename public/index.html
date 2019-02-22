@@ -90,7 +90,7 @@
         </dl>
         <dl class="dl-horizontal">
           <dt>Artists</dt>
-          {{#each response.artists}}
+          {{#each artists}}
             <dd class="text-overflow">{{@index}}. {{this.name}}</dd>
             {{/each}}
         </dl>
@@ -256,6 +256,7 @@
                   console.log("spotify", response);
                   spotifyPlaceholder.innerHTML = spotifyTemplate({
                     response: response.albums
+                    artists: response.albums.items[0].artists
                   });
 
                 }
