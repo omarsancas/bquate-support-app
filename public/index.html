@@ -255,7 +255,7 @@
                 success: function(response) {
                   console.log("spotify", response);
                   spotifyPlaceholder.innerHTML = spotifyTemplate({
-                    response: response.albums
+                    response: response.albums,
                     artists: response.albums.items[0].artists
                   });
 
