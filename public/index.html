@@ -88,6 +88,12 @@
             <dd class="text-overflow">{{@index}}. {{this.name}}</dd>
             {{/each}}
         </dl>
+        <dl class="dl-horizontal">
+          <dt>Artists</dt>
+          {{#each response.artists}}
+            <dd class="text-overflow">{{@index}}. {{this.name}}</dd>
+            {{/each}}
+        </dl>
         <br>
     </script>
 
