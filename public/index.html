@@ -257,11 +257,11 @@
                 },
                 success: function(response) {
                   console.log("spotify", response);
+                  console.log("cover", response.albums.items[0].images[0]);
                   spotifyPlaceholder.innerHTML = spotifyTemplate({
                     response: response.albums,
                     artists: response.albums.items[0].artists,
                     cover: response.albums.items[0].images[0]
-                    console.log(response.albums.items[0].images[0]);
                   });
 
                 }
