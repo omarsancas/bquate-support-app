@@ -98,7 +98,6 @@
           <dt>Cover</dt>
           <dd class="clearfix">
             <img class="media-object" width="150" src="{{cover.url}}" />
-            <dd class="text-overflow">{{cover.url}}</dd>
           </dd>
         </dl>
         <br>
@@ -114,6 +113,16 @@
       <dl class="dl-horizontal">
         <dt>AlbumTitle</dt><dd class="text-overflow">{{response.title}}</dd>
       </dl>
+      <dl class="dl-horizontal">
+        <dt>Artists</dt>
+          <dd class="text-overflow">{{response.artist.name}}</dd>
+      </dl>
+      <dl class="dl-horizontal">
+        <dt>Cover</dt>
+        <dd class="clearfix">
+          <img class="media-object" width="150" src="{{cover}}" />
+        </dd>
+      </dl>
       <br>
     </script>
 
@@ -124,7 +133,17 @@
       <dl class="dl-horizontal">
         <dt>AlbumId</dt><dd class="text-overflow">{{response.albumId}}</dd>
         <dt>albumName</dt><dd class="text-overflow">{{response.albumName}}</dd>
+        <dl class="dl-horizontal">
+          <dt>Artists</dt>
+            <dd class="text-overflow">{{artist}}</dd>
+        </dl>
         <dt>Duration</dt><dd class="text-overflow">{{response.duration}}</dd>
+        <dt>Cover</dt>
+        <dd class="text-overflow">
+          <dd class="clearfix">
+            <img class="media-object" width="150" src="{{response.albumCover}}" />
+          </dd>
+        </dd>
       </dl>
     </script>
 
@@ -245,7 +264,8 @@
             DZ.api('/album/upc:' + upc , 'GET', function(response){
 	             console.log("deezer", response);
                deezerPlaceholder.innerHTML = deezerTemplate({
-                 response: response
+                 response: response,
+                 cover: response.cover_medium
                });
 
              });
@@ -288,6 +308,7 @@
                     //oauthPlaceholder.innerHTML = userProfileTemplate(response);
                     claroPlaceholder.innerHTML = claroTemplate({
                       response: response,
+                      artist: response.artistName[0]
                     });
                   }
               });
