@@ -78,6 +78,7 @@
 
     <script id="spotify-template" type="text/x-handlebars-template">
       <h2>Spotify info</h2>
+        {{#if success}}
         <dl class="dl-horizontal">
           <dt>Available</dt>
           <dd class="text-overflow">{{response.total}}</dd>
@@ -101,29 +102,36 @@
           </dd>
         </dl>
         <br>
+        {{else}}
+          <dt>Not found</dt>
+        {{/if}}
     </script>
 
 
 
     <script id="deezer-template" type="text/x-handlebars-template">
       <h2>Deezer info</h2>
-      <dl class="dl-horizontal">
-        <dt>Available</dt><dd class="text-overflow">{{response.available}}</dd>
-      </dl>
-      <dl class="dl-horizontal">
-        <dt>AlbumTitle</dt><dd class="text-overflow">{{response.title}}</dd>
-      </dl>
-      <dl class="dl-horizontal">
-        <dt>Artists</dt>
-          <dd class="text-overflow">{{response.artist.name}}</dd>
-      </dl>
-      <dl class="dl-horizontal">
-        <dt>Cover</dt>
-        <dd class="clearfix">
-          <img class="media-object" width="150" src="{{cover}}" />
-        </dd>
-      </dl>
-      <br>
+      {{#if response.available}}
+        <dl class="dl-horizontal">
+          <dt>Available</dt><dd class="text-overflow">{{response.available}}</dd>
+        </dl>
+        <dl class="dl-horizontal">
+          <dt>AlbumTitle</dt><dd class="text-overflow">{{response.title}}</dd>
+        </dl>
+        <dl class="dl-horizontal">
+          <dt>Artists</dt>
+            <dd class="text-overflow">{{response.artist.name}}</dd>
+        </dl>
+        <dl class="dl-horizontal">
+          <dt>Cover</dt>
+          <dd class="clearfix">
+            <img class="media-object" width="150" src="{{cover}}" />
+          </dd>
+        </dl>
+        <br>
+      {{else}}
+        <dt>Not found</dt>
+      {{/if}}
     </script>
 
     <br>
@@ -246,6 +254,8 @@
             //Obtain value from input text
             var array = document.getElementById("obtain-upc").value;
 
+            var success = null;
+
             var array = array.split(':');
             if(array !=  null ){
               var upc = array[0];
@@ -280,13 +290,29 @@
                   'Authorization': 'Bearer ' + access_token
                 },
                 success: function(response) {
+                  if(response.albums.total === 0){
+                    success = null;
+
+                    spotifyPlaceholder.innerHTML = spotifyTemplate({
+                      response: {},
+                      artists: {},
+                      cover: {},
+                      success: success
+                    });
+                  }else{
+                    success = {"success": true};
+                    spotifyPlaceholder.innerHTML = spotifyTemplate({
+                      response: response.albums,
+                      artists: response.albums.items[0].artists,
+                      cover: response.albums.items[0].images[0],
+                      success: success
+                    });
+                  }
+
+                  console.log("success", success);
                   console.log("spotify", response);
                   console.log("cover", response.albums.items[0].images[0]);
-                  spotifyPlaceholder.innerHTML = spotifyTemplate({
-                    response: response.albums,
-                    artists: response.albums.items[0].artists,
-                    cover: response.albums.items[0].images[0]
-                  });
+
 
                 }
             });
