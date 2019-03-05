@@ -43,7 +43,7 @@ sequelize
     lastName: {
       type: Sequelize.STRING
     }
-  });*/
+  });
 
 
   // force: true will drop the table if it already exists
@@ -54,7 +54,7 @@ User.sync({force: true}).then(() => {
     lastName: 'Hancock'
   });
 });
-
+*/
 
 var client_id = 'c452cc75e6e04861af70640bd86f9b98'; // Your client id
 var client_secret = '013cdd7676d44541a9e4c915e6feece4'; // Your secret
