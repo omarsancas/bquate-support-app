@@ -13,6 +13,46 @@ var cors = require('cors');
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 const PORT = process.env.PORT || 8888
+const Sequelize = require('sequelize');
+
+const sequelize = new Sequelize({
+  database: 'support_app',
+  username: 'root',
+  password: null,
+  dialect: 'mysql'
+});
+
+
+
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.');
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err);
+  });
+
+
+  const User = sequelize.define('user', {
+    firstName: {
+      type: Sequelize.STRING
+    },
+    lastName: {
+      type: Sequelize.STRING
+    }
+  });
+
+
+  // force: true will drop the table if it already exists
+User.sync({force: true}).then(() => {
+  // Table created
+  return User.create({
+    firstName: 'John',
+    lastName: 'Hancock'
+  });
+});
+
 
 var client_id = 'c452cc75e6e04861af70640bd86f9b98'; // Your client id
 var client_secret = '013cdd7676d44541a9e4c915e6feece4'; // Your secret
