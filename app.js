@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 8888
 const Sequelize = require('sequelize');
 
 
-if(!process.env.PORT){
+/*
 const sequelize = new Sequelize({
   database: 'support_app',
   username: 'root',
@@ -43,8 +43,7 @@ sequelize
     lastName: {
       type: Sequelize.STRING
     }
-  });
-}
+  });*/
 
 
   // force: true will drop the table if it already exists
