@@ -39,6 +39,9 @@
         <div id="claro">
         </div>
 
+        <div id="itunes">
+        </div>
+
         <div id="upc-dasd">
           <input  id="obtain-upc" type="text" class="form-control" value="782150653014:6588881">
           <button class="btn btn-default" id="obtain-upc-data">Search UPC</button>
@@ -83,6 +86,16 @@
           <dt>Available</dt>
           <dd class="text-overflow">{{response.total}}</dd>
         </dl>
+
+        <dl class="dl-horizontal">
+          <dt>Link</dt>
+          <dd>
+            {{#each response.items}}
+              <a href="{{this.external_urls.spotify}}">{{this.external_urls.spotify}}</a>
+            {{/each}}
+          </dd>
+        </dl>
+
         <dl class="dl-horizontal">
           <dt>AlbumTitle</dt>
           {{#each response.items}}
@@ -115,6 +128,14 @@
         <dl class="dl-horizontal">
           <dt>Available</dt><dd class="text-overflow">{{response.available}}</dd>
         </dl>
+
+        <dl class="dl-horizontal">
+          <dt>Link</dt>
+          <dd>
+            <a href="{{response.link}}">{{response.link}}</a>
+          </dd>
+        </dl>
+
         <dl class="dl-horizontal">
           <dt>AlbumTitle</dt><dd class="text-overflow">{{response.title}}</dd>
         </dl>
@@ -153,6 +174,40 @@
           </dd>
         </dd>
       </dl>
+    </script>
+
+
+    <script id="itunes-template" type="text/x-handlebars-template">
+      <h2>iTunes info</h2>
+      {{#if success}}
+        <dl class="dl-horizontal">
+          <dt>Available</dt><dd class="text-overflow">{{response.resultCount}}</dd>
+        </dl>
+
+        <dl class="dl-horizontal">
+          <dt>Link</dt>
+          <dd>
+            <a href="{{response.collectionViewUrl}}">{{response.collectionViewUrl}}</a>
+          </dd>
+        </dl>
+
+        <dl class="dl-horizontal">
+          <dt>AlbumTitle</dt><dd class="text-overflow">{{response.collectionName}}</dd>
+        </dl>
+        <dl class="dl-horizontal">
+          <dt>Artists</dt>
+            <dd class="text-overflow">{{response.artistName}}</dd>
+        </dl>
+        <dl class="dl-horizontal">
+          <dt>Cover</dt>
+          <dd class="clearfix">
+            <img class="media-object" width="150" src="{{response.artworkUrl100}}" />
+          </dd>
+        </dl>
+        <br>
+      {{else}}
+        <dt>Not found</dt>
+      {{/if}}
     </script>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
@@ -197,6 +252,10 @@
         var claroSource = document.getElementById('claro-template').innerHTML,
             claroTemplate = Handlebars.compile(claroSource),
             claroPlaceholder = document.getElementById('claro');
+
+        var itunesSource = document.getElementById('itunes-template').innerHTML,
+            itunesTemplate = Handlebars.compile(itunesSource),
+            itunesPlaceholder = document.getElementById('itunes');
 
         var params = getHashParams();
 
@@ -339,6 +398,38 @@
                   }
               });
             }
+
+
+
+            $.ajax({
+                url: ' https://itunes.apple.com/lookup?upc=' + upc ,
+                "method": "GET",
+                dataType: 'json',
+                headers: {
+                  "cache-control": "no-cache",
+                  "Postman-Token": "a4f3d2be-2b23-4faf-adaa-25305a33c570"
+                },
+                success: function(response) {
+                  console.log("itunes", response);
+
+                  if(response.resultCount === 0){
+                    success = null;
+
+                    itunesPlaceholder.innerHTML = itunesTemplate({
+                      response: {},
+                      success: success
+                    });
+                  }else{
+                    success = {"success": true};
+                    itunesPlaceholder.innerHTML = itunesTemplate({
+                      response: response.results[0],
+                      success: success
+                    });
+                  }
+
+
+                }
+            });
 
 
             /*
