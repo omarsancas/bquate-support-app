@@ -378,9 +378,10 @@
 
 
             $.ajax({
-                url: ' https://itunes.apple.com/lookup?upc=' + upc,
+                url: ' https://cors-anywhere.herokuapp.com/https://itunes.apple.com/lookup?upc=' + upc,
                 "method": "GET",
                 contentType: 'application/json',
+                dataType: 'json',
                 success: function(response) {
                   console.log("itunes", response);
 
