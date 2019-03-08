@@ -380,7 +380,7 @@
             $.ajax({
                 url: ' https://itunes.apple.com/lookup?upc=' + upc,
                 "method": "GET",
-                dataType:'json',
+                contentType: 'application/json',
                 success: function(response) {
                   console.log("itunes", response);
 
