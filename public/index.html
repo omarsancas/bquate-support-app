@@ -404,11 +404,7 @@
             $.ajax({
                 url: ' https://itunes.apple.com/lookup?upc=' + upc ,
                 "method": "GET",
-                dataType: 'json',
-                headers: {
-                  "cache-control": "no-cache",
-                  "Postman-Token": "a4f3d2be-2b23-4faf-adaa-25305a33c570"
-                },
+                dataType: 'json',                
                 success: function(response) {
                   console.log("itunes", response);
 
