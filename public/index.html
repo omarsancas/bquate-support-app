@@ -376,6 +376,33 @@
                 }
             });
 
+
+            $.ajax({
+                url: ' https://itunes.apple.com/lookup?upc=' + upc,
+                "method": "GET",
+                dataType:'json',
+                success: function(response) {
+                  console.log("itunes", response);
+
+                  if(response.resultCount === 0){
+                    success = null;
+
+                    itunesPlaceholder.innerHTML = itunesTemplate({
+                      response: {},
+                      success: success
+                    });
+                  }else{
+                    success = {"success": true};
+                    itunesPlaceholder.innerHTML = itunesTemplate({
+                      response: response.results[0],
+                      success: success
+                    });
+                  }
+
+
+                }
+            });
+
             //Claro API CALL
             //rO$0Ks%RU
             if(array != null ){
@@ -401,33 +428,7 @@
 
 
 
-            $.ajax({
-                url: ' https://itunes.apple.com/lookup?upc=' + upc ,
-                "method": "GET",
-                headers: {
-                  'Content-Type': 'application/json'
-                },
-                success: function(response) {
-                  console.log("itunes", response);
 
-                  if(response.resultCount === 0){
-                    success = null;
-
-                    itunesPlaceholder.innerHTML = itunesTemplate({
-                      response: {},
-                      success: success
-                    });
-                  }else{
-                    success = {"success": true};
-                    itunesPlaceholder.innerHTML = itunesTemplate({
-                      response: response.results[0],
-                      success: success
-                    });
-                  }
-
-
-                }
-            });
 
 
             /*
