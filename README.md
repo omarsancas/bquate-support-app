@@ -43,3 +43,4 @@ Then, open `http://localhost:8888` in a browser.
 -Catch API errors like 401 or
 -Call itunes api https://itunes.apple.com/lookup?upc=720642462928
 -Check https://github.com/steve228uk/YouTube-Music/ for api endpoints
+-Add ticketId to the table
