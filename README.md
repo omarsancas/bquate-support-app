@@ -1,8 +1,6 @@
-# Spotify Accounts Authentication
+# Spotify Authentication
 
 This project contains basic demos showing the different OAuth 2.0 flows for [authenticating against the Spotify Web API](https://developer.spotify.com/web-api/authorization-guide/).
-
-These examples cover:
 
 * Authorization Code flow
 * Client Credentials flow
@@ -36,11 +34,19 @@ Then, open `http://localhost:8888` in a browser.
 
 #TO DOS
 
--Format information
--Accept multiple upcs convert in arrays
--Call FUGA API
--Get the title of the album and call claro api to search the album
--Catch API errors like 401 or
--Call itunes api https://itunes.apple.com/lookup?upc=720642462928
--Check https://github.com/steve228uk/YouTube-Music/ for api endpoints
--Add ticketId to the table
+# TO DO'S
+
+* Format information
+* Accept multiple upcs convert in arrays
+* Call FUGA API
+* ~~Get the title of the album and call claro api to search the album~~
+* Catch API errors like 401 or
+* ~~Call itunes api https://itunes.apple.com/lookup?upc=720642462928 :~~
+* Check https://github.com/steve228uk/YouTube-Music/ for api endpoints
+* Iterate over objects and make uploads
+* Make CRUD to register upc and claroId
+* Execute cron `30 6 1 * * /usr/local/bin/node /home/steve/example/script.js`
+* Export .csv multiple upc headers upc | claroId | ticket
+* Make report in xls when ticket is given
+* ~~Show report in table (bootstrap):~~
+* Search album with ID to retrieve label information
